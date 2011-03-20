@@ -1,0 +1,7 @@
+These are the (very basic) install guidelines for the Mailheader parser.
+
+1) Make sure you have a Linux system with: Apache, PHP (5.1+), MySQL (5.0+)
+2) Upload these files to a directory on your Linux System
+3) Create a MySQL database, MySQL user and MySQL password
+4) Import the SQL dump from the file 'SQL_IMPORT' into your database
+5) Change the DB credentials in the config.php file
