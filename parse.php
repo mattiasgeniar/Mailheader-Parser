@@ -184,13 +184,17 @@
 								}
 							}
 						}
+
+						// For the normal "Received: blabla" headers, just place them in blue
+						// so they stand out
+						$plainHeadersFormatted = preg_replace("|^Received: (.*)|mi", '<font color="blue">Received: ${1} </font>', $plainHeadersFormatted);
 					}
 				?>
 				
 				<br /><br />
 				<div style='border: 1px dotted gray; width:100%'>
 					<h2>Formatted headers</h2>
-					These are the headers you submitted, but formatted in a more orderly fashion. The headers we uncovered, are highlighted in color.<br /><br />
+					These are the headers you submitted, but formatted in a more orderly fashion. The headers we uncovered, are highlighted in color.<br />In <font color="blue">blue are the mailhops</font> that passed. <font color="red">Red is the header</font> and <font color="darkgreen">green is the value</font> of that header.<br /><br />
 					<div style='background-color: #EFEFEF; overflow: auto; width: 100%;'>
 						<?php echo nl2br($plainHeadersFormatted) ?>
 					</div>
