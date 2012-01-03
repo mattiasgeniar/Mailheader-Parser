@@ -19,6 +19,7 @@
 		$headers = str_replace("\n ", " ", $headers); 		// No enter+space
 		$headers = str_replace("\nby ", " by ", $headers);	// A line beginning with "by" is appended to the previous
 		$headers = str_replace("\nfor ", " for ", $headers); 	// Same goes for lines beginning with "for"
+		$headers = str_replace("\nwith ", " with ", $headers); 	// And 'with'
 		$headers = str_replace("\nid ", " id ", $headers);	// And 'id'
 		$headers = str_replace(",\n", ", ", $headers);		// Remove the comma + newline
 		$headers = str_replace(";\n", ", ", $headers);		// Remove the pointcomma + newline
@@ -172,5 +173,38 @@
 		} else {
 			return false;
 		}
+	}
+
+
+	/*
+	 * Convert seconds to human readable text.
+	 *
+	 * URL: http://csl.sublevel3.org/php-secs-to-human-text/
+	 *
+	 */
+	function secs_to_h($secs)
+	{
+	        $units = array(
+	                "week"   => 7*24*3600,
+	                "d"    =>   24*3600,
+	                "h"   =>      3600,
+	                "m" =>        60,
+	                "s" =>         1,
+	        );
+	
+		// specifically handle zero
+	        if ( $secs == 0 ) return "0 seconds";
+	
+	        $s = "";
+	
+	        foreach ( $units as $name => $divisor ) {
+	                if ( $quot = intval($secs / $divisor) ) {
+	                        $s .= "$quot$name";
+	                        $s .= (abs($quot) > 1 ? "" : "") . ", ";
+	                        $secs -= $quot * $divisor;
+	                }
+	        }
+	
+	        return substr($s, 0, -2);
 	}
 ?>
