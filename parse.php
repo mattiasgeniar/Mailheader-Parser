@@ -97,7 +97,7 @@
 								$timingPrev = $timeCurrent;
 							} else {
 								// Compare to previous hop
-								$hopDelay = $timeCurrent - $timingPrev ."s";
+								$hopDelay = $timeCurrent - $timingPrev;
 								$timingPrev = $timeCurrent;
 							}
 							
@@ -124,7 +124,8 @@
 							}
 							
 							// The rest
-							echo "	<td>". $hopDelay ."</td>
+							$hopDelayText = secs_to_h($hopDelay);
+							echo "	<td><acronym title=\"". $hopDelay ."s\">". $hopDelayText ."</acronym></td>
 									<td>". date("H:i:s", $timeCurrent) ."</td>
 								   </tr>";
 							//echo "From: ". $mailhopFrom["domain"] .", By: ". $mailhopBy["domain"] ."<br />";
