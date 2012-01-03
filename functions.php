@@ -10,14 +10,15 @@
 		while (strstr($headers, "\n\n")) // Loop until all double new lines are catched
 			$headers = str_replace("\n\n", "\n", $headers);
 
-		$headers = str_replace("\n\t", " ", $headers); 			// No enter+tabs
-		$headers = str_replace("\n ", " ", $headers); 			// No enter+space
-		$headers = str_replace("\nby ", " by ", $headers);		// A line beginning with "by" is appended to the previous
+		$headers = str_replace("\n\t", " ", $headers); 		// No enter+tabs
+		$headers = str_replace("\n ", " ", $headers); 		// No enter+space
+		$headers = str_replace("\nby ", " by ", $headers);	// A line beginning with "by" is appended to the previous
 		$headers = str_replace("\nfor ", " for ", $headers); 	// Same goes for lines beginning with "for"
-		$headers = str_replace("\nid ", " id ", $headers);		// And 'id'
-		$headers = str_replace(",\n", ", ", $headers);			// Remove the comma + newline
+		$headers = str_replace("\nid ", " id ", $headers);	// And 'id'
+		$headers = str_replace(",\n", ", ", $headers);		// Remove the comma + newline
+		$headers = str_replace(";\n", ", ", $headers);		// Remove the pointcomma + newline
 		// The following line _needs_ single quotes, no double quotes
-		$headers = str_replace(';\n', "; ", $headers);			// Remove the ; and newline
+		$headers = str_replace(';\n', "; ", $headers);		// Remove the ; and newline
 		$headers = str_replace("\n(", " (", $headers);
 		
 		return $headers;
