@@ -6,9 +6,14 @@
 			$headers = str_replace("  ", " ", $headers);		// Double space => single space
 			
 		$headers = str_replace("\r", "\n", $headers);			// Remove \r's
+
 		// Remove all double new lines
 		while (strstr($headers, "\n\n")) // Loop until all double new lines are catched
 			$headers = str_replace("\n\n", "\n", $headers);
+
+		// Remove all double spaces (who does this anyway?)
+                while (strstr($headers, "  ")) // Loop until all double spaces are catched
+                        $headers = str_replace("  ", " ", $headers);
 
 		$headers = str_replace("\n\t", " ", $headers); 		// No enter+tabs
 		$headers = str_replace("\n ", " ", $headers); 		// No enter+space
